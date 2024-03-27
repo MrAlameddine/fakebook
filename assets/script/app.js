@@ -5,21 +5,21 @@ import { onEvent, select, selectAll, create, print } from "./util.js";
 import { Subscriber } from "./subscriber.js";
 
 let groupsArr = [
-    'Ninja Penguin',
-    'Sloth Fanatics', 
-    'Crazy Hat Club', 
-    'Toast Lovers'
+    'SocialSphere Connect',
+    'Buzz Hub Centra', 
+    'Community Cornerstone', 
+    'Digital Dynasty Hub',
 ];
 
 let pagesArr = [
-    'Haiku Helpline', 
-    'Galactic Foodies',
-    'Punderful Puppies', 
-    'Zen Garden of Memes'
+    'Phoenix Brigade', 
+    'Celestial Syndicate',
+    'Mystic Mirage', 
+    'Titan Tribe'
 ];
 
 const newSubscriber = new Subscriber(
-    '3458fff', 'Saad Alddine', '933d', 'saad.alam.sis@gmail.com',
+    '3458fff', 'Saad Alddine', '933d', 'saad@gmail.com',
     groupsArr, pagesArr, true
 );
 
