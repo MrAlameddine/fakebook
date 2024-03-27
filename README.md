@@ -1,5 +1,5 @@
 ## Fakebook
-Click [here]() to check it out.
+Click [here](https://mralameddine.github.io/fakebook/) to check it out.
 
 ## Built With
 <p align='center'>
