@@ -1,9 +1,11 @@
-'use strict';
-
 import { onEvent, select, selectAll, create, print } from "./util.js";
-
 import { Subscriber } from "./subscriber.js";
 
+'use strict';
+
+// Importing necessary functions from util.js and subscriber.js
+
+// Arrays of groups and pages
 let groupsArr = [
     'SocialSphere Connect',
     'Buzz Hub Centra', 
@@ -18,6 +20,7 @@ let pagesArr = [
     'Titan Tribe'
 ];
 
+// Creating a new subscriber object
 const newSubscriber = new Subscriber(
     '3458fff', 'Saad Alddine', '933d', 'saad@gmail.com',
     groupsArr, pagesArr, true
@@ -28,6 +31,7 @@ const dialog = select('.dialog');
 const userInfo = select('.user-info');
 const modalBg = select('.modal-bg');
 
+// Function to set user data for the modal
 function setUserData() {
     let userData = newSubscriber.getInfo();
     let data = userData.split(', ');
@@ -45,6 +49,7 @@ function setUserData() {
     }
 }
 
+// Function to populate the modal with user data
 function populateModal() {
     let obj = setUserData();
     let heading = create('h1');
@@ -53,23 +58,26 @@ function populateModal() {
 
     for (const prop in obj) {
         let box = create('div');
-        let parag = create('p');
+        let paragraph = create('p');
         let span = create('span');
         span.innerText = prop;
-        parag.innerText = `${obj[prop]}`;
-        [span, parag].forEach(ele => box.appendChild(ele));
+        paragraph.innerText = `${obj[prop]}`;
+        [span, paragraph].forEach(ele => box.appendChild(ele));
         dialog.appendChild(box);
     }
 }
 
+// Populating the modal with user data
 populateModal();
 
+// Event listener for showing the modal
 userInfo.addEventListener('click', function() {
     dialog.classList.remove('is-hidden');
     dialog.classList.add('is-visible');
     modalBg.classList.add('modal-bg-dark');
 });
 
+// Event listener for hiding the modal
 window.addEventListener('click', (event) => {
     if (event.target == modalBg) {
         dialog.classList.remove('is-visible');
@@ -85,6 +93,7 @@ const fileInput = select('#file-input');
 const fileName = select('.file-name');
 const fakebook = select('.fakebook');
 
+// Event listener for file input change
 onEvent('change', fileInput, () => {
     let file = fileInput.files[0];
 
@@ -95,10 +104,12 @@ onEvent('change', fileInput, () => {
     }
 });
 
+// Function to get the text from the textarea
 function getText() {
     return text.value.trim();
 }
 
+// Function to get the image from the file input
 function getImage() {
     if (fileInput.files.length !== 0) {
         let file = fileInput.files[0];
@@ -110,6 +121,7 @@ function getImage() {
     }
 }
 
+// Function to create the header content for a post
 function postHeaderContent() {
     let userIcon = create('i');
     let date = create('p');
@@ -123,6 +135,7 @@ function postHeaderContent() {
     return [userIcon, name, date];
 }
 
+// Function to create the header for a post
 function createHeader() {
     let header = create('div');
     let content = postHeaderContent();
@@ -134,6 +147,7 @@ function createHeader() {
     return header;
 }
 
+// Function to append a post to the fakebook container
 function appendPost(container) {
     if (fakebook.children.length > 1) {
         fakebook.insertBefore(container, fakebook.children[1]);
@@ -142,12 +156,14 @@ function appendPost(container) {
     }
 }
 
+// Function to check if the post is valid
 function isValid() {
     if (text.value !== "" || fileInput.files.length !== 0) {
         return true;
     }
 }
 
+// Function to create a new post
 function createPost() {
     if (isValid ()) {
         let header = createHeader();
@@ -164,6 +180,7 @@ function createPost() {
     }
 }
 
+// Event listener for creating a new post
 onEvent('click', post, () => {
     createPost();
     fileInput.value = null;

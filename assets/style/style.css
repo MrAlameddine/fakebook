@@ -121,7 +121,6 @@ main {
 .fakebook > div > img {
     border-radius: 4px;
     padding-top: 10px;
-
 }
 
 .fakebook p {
@@ -198,8 +197,7 @@ main {
 }
 
 .dialog :nth-child(5) p,
-.dialog :nth-child(6) p
-{
+.dialog :nth-child(6) p {
     font-style: italic;
 }
 
